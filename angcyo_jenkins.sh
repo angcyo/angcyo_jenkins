@@ -21,7 +21,7 @@ installCommand(){
     echo "ok."
   else 
     echo "install $1."
-    yum -y $1 >>log
+    yum -y install $1 >>log
   fi
 }
 
