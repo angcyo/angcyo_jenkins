@@ -112,6 +112,7 @@ download(){
         unzip -d $folder_name $file_name >>log
         echo "export ANDROID_HOME=$work_path/$sdk_path" >>/etc/profile
         echo `export PATH=$ANDROID_HOME/tools:$PATH` >>/etc/profile
+        source /etc/profile
         cd $sdk_path/tools
         #pwd
         ./bin/sdkmanager $sdk_tools $sdk_p
