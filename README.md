@@ -15,7 +15,24 @@ CentOS7 一键搭建/配置 Jenkins 环境
 
 ## 你可能还需要手动配置一下任务
 ### 1.Tomcat端口和用户
+*端口修改*
+进入`Tomcat`根目录, 进入`conf`文件夹, 打开`server.xml`文件, 找到
+```
+<Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+```
+`8080`就是端口 可以修改. 重启`Tomcat`之后生效. 同时新的端口需要在系统防火墙规则内.
 
+*用户修改*
+进入`Tomcat`根目录, 进入`conf`文件夹, 打开`tomcat-users.xml`文件, 在文件末尾`</tomcat-users>`标签之前,加入
+```
+#角色,用来区别权限 tomcat有规定的几种.
+<role rolename="manager-gui"/>
+#使用上面的角度 创建用户
+<user username="name" password="123456" roles="manager-gui"/>
+```
+保存 重启`Tomcat`生效.
 
 
 
