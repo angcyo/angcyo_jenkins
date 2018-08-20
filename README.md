@@ -10,7 +10,7 @@ CentOS7 一键搭建/配置 Jenkins 环境
 1. 下载`Tomcat` 并解压
 2. 下载`Jenkins` 并复制到`Tomcat`的`webapps`目录
 3. 下载`Java` 并解压和写入`/etc/profile`环境变量
-4. 下载`android sdk tools` 并拉取相应的`sdk版本` 和 `build tools`
+4. 下载`android sdk tools` 并写入`/etc/profile`环境变量和拉取相应的`sdk版本` 和 `build tools`
 5. 下载`Gradle`, 并解压
 
 ## 你可能还需要手动配置一下任务
