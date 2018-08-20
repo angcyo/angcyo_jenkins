@@ -8,7 +8,7 @@ wget https://raw.githubusercontent.com/angcyo/angcyo_jenkins/master/angcyo_jenki
 # 下载脚本配置文件
 wget https://raw.githubusercontent.com/angcyo/angcyo_jenkins/master/config.sh
 # 赋予执行权限
-chmod angcyo_jenkins.sh
+chmod 777 angcyo_jenkins.sh
 # 执行脚本
 ./angcyo_jenkins.sh
 ```
