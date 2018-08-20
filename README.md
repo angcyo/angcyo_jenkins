@@ -46,6 +46,8 @@ chmod 777 angcyo_jenkins.sh
 ```
 保存 重启`Tomcat`生效.
 
+### 2.Jenkins安装
+上述步骤之后 启动`Tomcat``Jenkins`会自动安装 安装完成后 打开`Jenkins`首页`http://localhost:8080/Jenkins`, 进行初始化即可
 
 
 # 写在最后
