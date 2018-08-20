@@ -1,4 +1,4 @@
-download_path="./b"
+download_path="./Download"
 sdk_path="./AndroidSdk"
 sdk_tools="build-tools;27.0.3" 
 sdk_p="platforms;android-27"
