@@ -102,8 +102,8 @@ download(){
       echo "unzip $file_name to $folder_name" 
       if [ "$2" == "java" ]
       then 
-        mkdir -p $folder_name
-        tar -zxvf $file_name -C $folder_name
+        mkdir -p /usr/lib/jvm
+        tar -zxvf $file_name -C /usr/lib/jvm
         #echo "export JAVA_HOME=$java_path" >>/etc/profile
         #echo 'export JRE_HOME=${JAVA_HOME}/jre' >>/etc/profile
         #echo 'export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib' >>/etc/profile
