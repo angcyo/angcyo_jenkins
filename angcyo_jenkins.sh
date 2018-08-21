@@ -120,6 +120,7 @@ download(){
         #pwd
         ./bin/sdkmanager $sdk_tools $sdk_p
         cd ..
+        a_path=$(pwd)
         cd ..
       elif [ "$2" == "gradle" ]
       then 
@@ -149,6 +150,7 @@ installCommand unzip
 installCommand git
 
 cd $target_path
+d_path=$(pwd)
 
 defaultValue $tomcat_url "https://mirrors.cnnic.cn/apache/tomcat/tomcat-9/v9.0.10/bin/apache-tomcat-9.0.10.tar.gz_test"
 tomcat_url_d=$temp_url
@@ -176,8 +178,9 @@ download $java_url_d java -linux-x64.tar.gz
 download $gradle_url_d gradle .zip
 download $sdk_tools_url_d sdk .zip
 
+echo "File Download in $d_path"
 echo "Jdk in $jdk_path"
-echo "Sdk in $work_path/$target_path/$sdk_path"
+echo "Sdk in $a_path"
 
 read -p "all command end..."
 exit
