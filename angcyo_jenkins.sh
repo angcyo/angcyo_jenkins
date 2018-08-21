@@ -100,6 +100,11 @@ download(){
       cd $folder_name
       a_path=$(pwd)
       cd ..
+    elif 
+    then 
+      cd $folder_name
+      tomcat_path=$(pwd)
+      cd ..
     fi
   else
     if [ "$2" == "jenkins" ]
@@ -185,9 +190,14 @@ download $java_url_d java -linux-x64.tar.gz
 download $gradle_url_d gradle .zip
 download $sdk_tools_url_d sdk .zip
 
-echo "File Download in $d_path"
-echo "Jdk in $jdk_path"
-echo "Sdk in $a_path"
+echo "............................................"
+echo "File Download in: $d_path"
+echo "Jdk in: $jdk_path"
+echo "Sdk in: $a_path"
+echo "Gradle in: $d_path"
+echo "Tomcat in: $tomcat_path"
+
+echo "............................................"
 
 read -p "all command end..."
 exit
