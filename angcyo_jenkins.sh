@@ -1,4 +1,5 @@
 work_path=$(pwd)
+jdk_path=/usr/lib/jvm
 
 init(){
  rm -df log
@@ -102,8 +103,8 @@ download(){
       echo "unzip $file_name to $folder_name" 
       if [ "$2" == "java" ]
       then 
-        mkdir -p /usr/lib/jvm
-        tar -zxvf $file_name -C /usr/lib/jvm
+        mkdir -p $jdk_path
+        tar -zxvf $file_name -C $jdk_path
         #echo "export JAVA_HOME=$java_path" >>/etc/profile
         #echo 'export JRE_HOME=${JAVA_HOME}/jre' >>/etc/profile
         #echo 'export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib' >>/etc/profile
@@ -112,7 +113,7 @@ download(){
       elif [ "$2" == "sdk" ] 
       then 
         unzip -d $folder_name $file_name >>log
-        #echo "export ANDROID_HOME=$work_path/$sdk_path" >>/etc/profile
+        #echo "export ANDROID_HOME=$work_path/$target_path/$sdk_path" >>/etc/profile
         #echo 'export PATH=$ANDROID_HOME/tools:$PATH' >>/etc/profile
         #source /etc/profile
         cd $sdk_path/tools
@@ -174,6 +175,9 @@ download $jenkins_url_d jenkins
 download $java_url_d java -linux-x64.tar.gz
 download $gradle_url_d gradle .zip
 download $sdk_tools_url_d sdk .zip
+
+echo "Jdk in $jdk_path"
+echo "Sdk in $work_path/$target_path/$sdk_path"
 
 read -p "all command end..."
 exit
