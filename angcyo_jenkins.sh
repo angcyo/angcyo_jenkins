@@ -94,6 +94,13 @@ download(){
     #rm -df $folder_name
     #tar xf $folder_name
     echo "Folder $folder_name is Exist, Pass unzip."
+
+    if [ "$2" == "sdk" ]
+    then
+      cd $folder_name
+      a_path=$(pwd)
+      cd ..
+    fi
   else
     if [ "$2" == "jenkins" ]
     then
@@ -112,7 +119,7 @@ download(){
         #source /etc/profile
       elif [ "$2" == "sdk" ] 
       then 
-        unzip -d $folder_name $file_name >>log
+        unzip -do $folder_name $file_name >>log
         #echo "export ANDROID_HOME=$work_path/$target_path/$sdk_path" >>/etc/profile
         #echo 'export PATH=$ANDROID_HOME/tools:$PATH' >>/etc/profile
         #source /etc/profile
@@ -124,7 +131,7 @@ download(){
         cd ..
       elif [ "$2" == "gradle" ]
       then 
-        unzip $file_name >>log
+        unzip -o $file_name >>log
       else
         tar -zxvf $file_name >>log
       fi
