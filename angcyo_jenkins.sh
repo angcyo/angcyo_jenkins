@@ -74,6 +74,9 @@ download(){
   if [ "$2" == "tomcat" ]
   then
     tomcat_path=$folder_name
+    cd $folder_name
+    t_path=$(pwd)
+    cd ..
   fi
 
   if [ "$2" == "java" ]
@@ -103,7 +106,7 @@ download(){
     elif [ "$2" == "tomcat" ] 
     then 
       cd $folder_name
-      tomcat_path=$(pwd)
+      t_path=$(pwd)
       cd ..
     fi
   else
@@ -161,6 +164,9 @@ installCommand tar
 installCommand unzip
 installCommand git
 
+wget -N https://raw.githubusercontent.com/angcyo/angcyo_jenkins/master/env_path.sh
+chmod 777 ./env_path.sh
+
 cd $target_path
 d_path=$(pwd)
 
@@ -195,7 +201,7 @@ echo "File Download in: $d_path"
 echo "Jdk in: $jdk_path"
 echo "Sdk in: $a_path"
 echo "Gradle in: $d_path"
-echo "Tomcat in: $tomcat_path"
+echo "Tomcat in: $t_path"
 
 echo "............................................"
 
