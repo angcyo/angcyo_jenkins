@@ -74,9 +74,7 @@ download(){
   if [ "$2" == "tomcat" ]
   then
     tomcat_path=$folder_name
-    cd $folder_name
-    t_path=$(pwd)
-    cd ..
+    t_path=$(pwd)/$folder_name
   fi
 
   if [ "$2" == "java" ]
