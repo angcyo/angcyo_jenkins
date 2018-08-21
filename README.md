@@ -21,9 +21,29 @@ chmod 777 angcyo_jenkins.sh
 **脚本包含的任务:**
 1. 下载`Tomcat` 并解压
 2. 下载`Jenkins` 并复制到`Tomcat`的`webapps`目录
-3. 下载`Java` 并解压和写入`/etc/profile`环境变量
-4. 下载`android sdk tools` 并写入`/etc/profile`环境变量和拉取相应的`sdk版本` 和 `build tools`
+3. 下载`Java` 并解压到`/usr/lib/jvm/`目录
+4. 下载`android sdk tools` 并拉取相应的`sdk版本` 和 `build tools`, 手动命令`sdkmanager "build-tools;27.0.3" "platforms;android-27"`
 5. 下载`Gradle`, 并解压
+
+
+环境变量自动写入有问题,请手动配置:
+```
+# 打开环境变量配置文件
+vi /etc/profile
+
+#java 追加,请Java检查路径...
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_181
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+
+# android 追加 请检查路径...
+export ANDROID_HOME='/angcyo/sdk'
+export PATH=$ANDROID_HOME/tools:$PATH
+
+# 立即生效
+source /etc/profile
+```
 
 ## 你可能还需要手动配置一下任务
 ### 1.Tomcat端口和用户
