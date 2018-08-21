@@ -54,9 +54,9 @@ download(){
   file_name=${url##*/}
   folder_name=${file_name%%$3*}
 
-  echo "$file_name"
-  echo "$folder_name"
-  return 0
+  #echo "$file_name"
+  #echo "$folder_name"
+  #return 0
   #echo "$target_path/$file_name"
   #exit
   if [ -f "$file_name" ]
