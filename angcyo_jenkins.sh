@@ -51,9 +51,11 @@ download(){
   url=$1
   echo "download $url."
   file_name=${url##*/}
-  folder_name=${file_name%%.tar.gz*}
+  folder_name=${file_name%%$3*}
 
-  #echo "$file_name"
+  echo "$file_name"
+  echo "$folder_name"
+  return 0
   #echo "$target_path/$file_name"
   #exit
   if [ -f "$file_name" ]
@@ -102,17 +104,17 @@ download(){
       then 
         mkdir -p $folder_name
         tar -zxvf $file_name -C $folder_name
-        echo "export JAVA_HOME=$java_path" >>/etc/profile
-        echo 'export JRE_HOME=${JAVA_HOME}/jre' >>/etc/profile
-        echo 'export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib' >>/etc/profile
-        echo 'export PATH=${JAVA_HOME}/bin:$PATH' >>/etc/profile
-        source /etc/profile
+        #echo "export JAVA_HOME=$java_path" >>/etc/profile
+        #echo 'export JRE_HOME=${JAVA_HOME}/jre' >>/etc/profile
+        #echo 'export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib' >>/etc/profile
+        #echo 'export PATH=${JAVA_HOME}/bin:$PATH' >>/etc/profile
+        #source /etc/profile
       elif [ "$2" == "sdk" ] 
       then 
         unzip -d $folder_name $file_name >>log
-        echo "export ANDROID_HOME=$work_path/$sdk_path" >>/etc/profile
-        echo `export PATH=$ANDROID_HOME/tools:$PATH` >>/etc/profile
-        source /etc/profile
+        #echo "export ANDROID_HOME=$work_path/$sdk_path" >>/etc/profile
+        #echo 'export PATH=$ANDROID_HOME/tools:$PATH' >>/etc/profile
+        #source /etc/profile
         cd $sdk_path/tools
         #pwd
         ./bin/sdkmanager $sdk_tools $sdk_p
@@ -167,11 +169,11 @@ defaultValue $gradle_url "https://downloads.gradle.org/distributions/gradle-4.4.
 gradle_url_d=$temp_url
 #echo $gradle_url_d
 
-download $tomcat_url_d tomcat
+download $tomcat_url_d tomcat .tar.gz
 download $jenkins_url_d jenkins
-download $java_url_d java
-download $gradle_url_d gradle
-download $sdk_tools_url_d sdk
+download $java_url_d java -linux-x64.tar.gz
+download $gradle_url_d gradle .zip
+download $sdk_tools_url_d sdk .zip
 
 read -p "all command end..."
 exit
