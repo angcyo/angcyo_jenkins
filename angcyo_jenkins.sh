@@ -100,7 +100,7 @@ download(){
       cd $folder_name
       a_path=$(pwd)
       cd ..
-    elif 
+    elif [ "$2" == "tomcat" ] 
     then 
       cd $folder_name
       tomcat_path=$(pwd)
