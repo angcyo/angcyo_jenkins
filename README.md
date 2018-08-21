@@ -44,6 +44,7 @@ export PATH=$ANDROID_HOME/tools:$PATH
 # 立即生效
 source /etc/profile
 ```
+你也可以下载脚本 `env_path.sh` , 打开脚本 修改对应路径参数. 然后执行.
 
 ## 你可能还需要手动配置一下任务
 ### 1.Tomcat端口和用户
